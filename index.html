@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>NPS API</title>
+</head>
+<body>
+    <form role="form" id="form" class="form">
+        <label for="search" class="label"><h3>Search</h3></label>
+        <input type="text" name="search" id="search" placeholder="Yosemite">
+        <label for="result-quantity" class="label"><p><strong>Amount of results:</strong></p></label>
+        <input type="number" name="result-quantity" class="result-quantity" id="result-quantity" min="1" max="99" value="10">
+        <button role="button" type="submit" class="submit-button" id="submit-button">submit</button>
+    </form>
+    <p class="error" id="error"></p>
+    <main role="main" class="results-container" id="results-container">
+        <header role="heading" class="header" id="header">Results</header>
+        <ul role="list" class="list" id="list">
+        </ul>
+    </main>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
