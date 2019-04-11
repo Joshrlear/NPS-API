@@ -11,6 +11,7 @@ function formatQueryParams(params) {
 }
 
 function displayResults(responseJson) {
+    console.log('displaying...');
     $('#results-container').empty();
     $('#error').empty();
     const data = responseJson.data;
@@ -21,14 +22,15 @@ function displayResults(responseJson) {
         <a href="${responseJson.data[i].url}"><button role="button type="button" class="park-button">More Info</button></a>
         `)
     }
+    console.log(responseJson.data);
 }
 
-function getParks(search, resultQty) {
+function getParks(resultQty, search) {
     console.log('getting parks');
 
     const params = {
         api_key: apiKey,
-        q: search,
+        stateCode: search,
         limit: resultQty - 1
     };
     console.log(params);
@@ -36,7 +38,7 @@ function getParks(search, resultQty) {
     const queryString = formatQueryParams(params);
     const url = baseUrl + '?' + queryString;
 
-    console.log('created url');
+    console.log(url);
 
     fetch(url)
         .then(response => {
@@ -56,9 +58,9 @@ function getParks(search, resultQty) {
 function handleSumbit() {
     $('#form').submit(event => {
         event.preventDefault();
-        const search = $('#search').val();
+        const search = $('#search').val().replace(/[,\s]/g,',').split(',');
         const resultQty = $('#result-quantity').val();
-        getParks(search, resultQty);
+        getParks(resultQty, search);
     })
 }
 
